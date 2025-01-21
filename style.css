@@ -1,0 +1,197 @@
+.Calculator{
+    width: 670px;
+    scale: 0.8;
+    transform: translate(-60%, -25px);
+    z-index: 10;
+    bottom: 8%;
+    left: 50%;
+    background-image: url(buttons/Calculator.png);
+    position: absolute;
+    display: flex;
+    height: 760px;
+    flex-direction: row-reverse;
+}
+.calcBG{
+    display: flex;
+    height: fit-content;
+    width: 610px;
+    margin: 95px 0px 0px 0px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+div#calcDpl{
+    color: #213528;
+    font-weight: 600;
+    width: fit-content;
+    padding: 0px 85.5px 0px 0px;
+    margin-bottom: 70px;
+    font-size: 90px;
+    text-align: end;
+    height: 90px;
+}
+.lines{
+    width: fit-content;
+    display: flex;
+}
+div#AllButtons{
+    margin-right: 19px;
+    display: flex;
+    width: fit-content;
+}
+div#send {
+    margin-right: 30px;
+}
+.buttons{
+    cursor: pointer;
+    margin-bottom: 30px;
+    height: 90px;
+}
+.column {
+    display: flex;
+}
+.vezes{
+    font-size: x-large;
+    font-weight: 600;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    color: #ff9b00;
+    position: relative;
+    top: 63.5%;
+    left: -49.5%;
+}
+
+
+div#shop{
+    padding-top: 30px;
+    position: absolute;
+    bottom: 70px;
+    left: 80px;
+    height: fit-content;
+    width: fit-content;
+    background-color: #3a3937;
+    z-index: 10;
+}
+.showcases{
+    padding: 10px 20px 0px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+div#ShopBtns{
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.BuyButtons{
+    color: #5cbd4f;
+    font-weight: 600;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#money{
+    transform: scale(.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    position: absolute;
+    bottom: -40px;
+    right: -35px;
+    background-image: url(buttons/money.png);
+    color: #0f5106;
+    height: 480px;
+    width: 560px;
+}
+div#cash{
+    position: absolute;
+    font-weight: 700;
+    font-size: 114px;
+    top: 16%;
+    left: 59%;
+}
+div#rounds{
+    transform: translate(-37%, 3%);
+    left: 50%;
+    color: #444444;
+    font-weight: 700;
+    bottom: 11%;
+    position: absolute;
+    font-size: 100px;
+}
+
+
+
+.obj{
+    transform: scale(.8);
+    z-index: 10;
+    position: absolute;
+    border-radius: 150px;
+    bottom: 0%;
+    left: 5%;
+    color: #000000;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.text-obj{
+    top: 7%;
+    left: 64%;
+    position: absolute;
+}
+div#needed{
+    color: crimson;
+    font-weight: 100;
+    font-size: 88px;
+}
+div#text-cur{
+    transform: translate(-50%, 0px);
+    bottom: 23%;
+    left: 64%;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-weight: 200;
+    font-size: 125px;
+}
+
+    body, html {
+        font-family: "Tiny5", serif;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Evita barras de rolagem */
+        height: 100%;
+    }
+    /* Contêiner do fundo */
+    .parallax-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        perspective: 1000px;
+        z-index: 1;
+    }
+
+    /* Imagem de fundo */
+    .parallax-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 110%; /* Ligeiramente maior para evitar bordas visíveis */
+        height: 110%; 
+        background-image: url('buttons/BG.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: translate(-5%, -5%) scale(1.05);
+        transition: transform 0.1s linear;
+    }
