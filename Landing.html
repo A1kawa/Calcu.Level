@@ -96,23 +96,32 @@
             sound.play()
             tittlecard.src = "buttons/TittleFinal.png"
             await delay(1500)
+            sound.currentTime = 0
             sound.play()
-            music.play()
             document.getElementsByClassName('parallax-background')[0].style.backgroundImage = "url('buttons/BG.png')"
-            await delay(500)
+            await delay(200)
+            sound.currentTime = 0
+            sound.play()
             document.getElementsByClassName('Play')[0].style.display = 'block'
+            await delay(200)
+            music.play()
         }
 
         function delay(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-        function PlayGame() {
+        async function PlayGame() {
+            document.getElementById('PlayButton').src = "buttons/PlayButtonClick.png"
             document.getElementById('clique').play()
+            await delay(300)
+            document.getElementById('PlayButton').src = "buttons/PlayButton.png"
             setTimeout(() => {
             window.location.href = "index.html"
-            }, 1500)
+            }, 1000)
         }
         function Hover(){
+            const hoverSnd = new Audio('sounds/hover.mp3')
+            hoverSnd.play()
             document.getElementById('PlayButton').src = "buttons/PlayButtonHover.png"
         }
         function HoverOut() {
