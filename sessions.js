@@ -347,6 +347,7 @@ function send() {
 }
 
 function Reroll() {
+    ClickSnd()
     if (Cash >= 5) {
     Cash = Cash - 5
     document.getElementById('cash').innerText = `$${Cash}`
