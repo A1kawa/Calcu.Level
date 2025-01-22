@@ -70,13 +70,13 @@ div#shop{
     position: absolute;
     bottom: 70px;
     left: 80px;
-    height: fit-content;
-    width: fit-content;
-    background-color: #3a3937;
+    height: 480px;
+    width: 510px;
+    background-image: url(buttons/shop.png);
     z-index: 10;
 }
 .showcases{
-    padding: 10px 20px 0px 20px;
+    padding: 30px 20px 0px 20px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -84,7 +84,7 @@ div#ShopBtns{
     cursor: pointer;
     margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 .BuyButtons{
     color: #5cbd4f;

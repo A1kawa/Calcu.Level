@@ -1,26 +1,26 @@
 var CalcRange01 = false
 var CalcRange02 = false
 var sorting = [
-    '<div id="Buy00" class="BuyButtons" onclick="buy(0)"><img src="buttons/0.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>',
-    '<div id="Buy01" class="BuyButtons" onclick="buy(1)"><img src="buttons/1.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$8</div>', 
-    '<div id="Buy02" class="BuyButtons" onclick="buy(2)"><img src="buttons/2.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="Buy03" class="BuyButtons" onclick="buy(3)"><img src="buttons/3.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>',
-    '<div id="Buy04" class="BuyButtons" onclick="buy(4)"><img src="buttons/4.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="Buy05" class="BuyButtons" onclick="buy(5)"><img src="buttons/5.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="Buy06" class="BuyButtons" onclick="buy(6)"><img src="buttons/6.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>',
-    '<div id="Buy07" class="BuyButtons" onclick="buy(7)"><img src="buttons/7.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="Buy08" class="BuyButtons" onclick="buy(8)"><img src="buttons/8.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="Buy09" class="BuyButtons" onclick="buy(9)"><img src="buttons/9.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>',
-    '<div id="BuyMais" class="BuyButtons" onclick="buy(10)"><img src="buttons/+.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$8</div>', 
-    '<div id="BuyMenos" class="BuyButtons" onclick="buy(11)"><img src="buttons/-.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$7</div>', 
-    '<div id="BuyMulti" class="BuyButtons" onclick="buy(12)"><img src="buttons/x.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$6</div>', 
-    '<div id="BuyDivi" class="BuyButtons" onclick="buy(13)"><img src="buttons/divide.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$8</div>', 
-    '<div id="BuyRoll" class="BuyButtons" onclick="buy(14)"><img src="buttons/roll.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$7</div>',
-    '<div id="BuyAppend" class="BuyButtons" onclick="buy(15)"><img src="buttons/append.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$7</div>',
-    '<div id="BuyNear" class="BuyButtons" onclick="buy(16)"><img src="buttons/near.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$9</div>',
-    '<div id="BuyConv" class="BuyButtons" onclick="buy(17)"><img src="buttons/convert.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$8</div>',
-    '<div id="BuyAppend01" class="BuyButtons" onclick="buy(18)"><img src="buttons/append01.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$7</div>',
-    '<div id="BuyRev" class="BuyButtons" onclick="buy(19)"><img src="buttons/rev.png" alt="" class="buttons" style="margin: 0px 0px 10px 0px;">$7</div>',
+    '<div id="Buy00" class="BuyButtons" onclick="buy(0)"><img src="buttons/0.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
+    '<div id="Buy01" class="BuyButtons" onclick="buy(1)"><img src="buttons/1.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
+    '<div id="Buy02" class="BuyButtons" onclick="buy(2)"><img src="buttons/2.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy03" class="BuyButtons" onclick="buy(3)"><img src="buttons/3.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
+    '<div id="Buy04" class="BuyButtons" onclick="buy(4)"><img src="buttons/4.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy05" class="BuyButtons" onclick="buy(5)"><img src="buttons/5.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy06" class="BuyButtons" onclick="buy(6)"><img src="buttons/6.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
+    '<div id="Buy07" class="BuyButtons" onclick="buy(7)"><img src="buttons/7.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy08" class="BuyButtons" onclick="buy(8)"><img src="buttons/8.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy09" class="BuyButtons" onclick="buy(9)"><img src="buttons/9.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
+    '<div id="BuyMais" class="BuyButtons" onclick="buy(10)"><img src="buttons/+.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
+    '<div id="BuyMenos" class="BuyButtons" onclick="buy(11)"><img src="buttons/-.png" alt="" class="buttons" style="margin: 0px;">$7</div>', 
+    '<div id="BuyMulti" class="BuyButtons" onclick="buy(12)"><img src="buttons/x.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="BuyDivi" class="BuyButtons" onclick="buy(13)"><img src="buttons/divide.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
+    '<div id="BuyRoll" class="BuyButtons" onclick="buy(14)"><img src="buttons/roll.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyAppend" class="BuyButtons" onclick="buy(15)"><img src="buttons/append.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyNear" class="BuyButtons" onclick="buy(16)"><img src="buttons/near.png" alt="" class="buttons" style="margin: 0px;">$9</div>',
+    '<div id="BuyConv" class="BuyButtons" onclick="buy(17)"><img src="buttons/convert.png" alt="" class="buttons" style="margin: 0px;">$8</div>',
+    '<div id="BuyAppend01" class="BuyButtons" onclick="buy(18)"><img src="buttons/append01.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyRev" class="BuyButtons" onclick="buy(19)"><img src="buttons/rev.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
 ]
 
 
@@ -388,4 +388,12 @@ function buy(BtnNmb) {
             }
         break;
     }
+}
+
+function hoverShop(witch) {
+    const bttn = document.getElementById(witch)
+    bttn.style.scale = "1.03"
+    bttn.addEventListener('mouseleave', function hoverShopOut() {
+        bttn.style.scale = "1"
+    })
 }

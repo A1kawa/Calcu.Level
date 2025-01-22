@@ -35,9 +35,7 @@ var BotConv = 0
 var BotRev = 0
 
 window.onload = function BeginGame(){
-    bgSnd.muted = true
     bgSnd.loop = true
-    bgSnd.play()
     display.innerText = NmbAtual
     document.getElementById('shop').style.display = 'none'
     document.getElementById('needed').innerText = NmbComp
