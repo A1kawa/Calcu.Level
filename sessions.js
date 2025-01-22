@@ -331,6 +331,7 @@ function send() {
    operacao = ""
 
    if (NmbAtual == NmbComp) {
+    passou.volume = .4
     passou.play()
     Cash = Cash + 23
     Lvl++
@@ -423,6 +424,7 @@ function Reroll() {
     await delay(20)
     document.getElementById('congrats').innerText = "CONGRATS"
     await delay(20)
+    document.getElementById('congrats').style.cursor = "default"
 }
 
 

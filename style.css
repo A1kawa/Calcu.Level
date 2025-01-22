@@ -111,6 +111,7 @@ div#ShopBtns{
     width: 560px;
 }
 #congrats{
+    cursor: pointer;
     position: absolute;
     top: -150px;
     left: 50%;
