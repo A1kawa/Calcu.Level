@@ -1,3 +1,7 @@
+
+
+let parallaxCalc = true
+const passou = new Audio('sounds/passed.mp3')
 let BossSnd
 let bgSnd = document.getElementById('musica')
 let BttnSnd = document.getElementById('default')
@@ -327,7 +331,6 @@ function send() {
    operacao = ""
 
    if (NmbAtual == NmbComp) {
-    const passou = new Audio('sounds/passed.mp3')
     passou.play()
     Cash = Cash + 23
     Lvl++
@@ -342,21 +345,117 @@ function send() {
    ClickSnd()
 }
 
-function OpenShop() {
+function Reroll() {
+    if (Cash >= 5) {
+    Cash = Cash - 5
     document.getElementById('cash').innerText = `$${Cash}`
-    document.getElementsByClassName('obj')[0].style.display = 'none'
+    const shuffled = sorting.sort(() => Math.random() - 0.5)
+    let selected = shuffled.slice(0, 3)
+    document.getElementById('showcase01').innerHTML = selected.join('')
+    selected = shuffled.slice(4, 7)
+    document.getElementById('showcase02').innerHTML = selected.join('')
+    }
+}
+
+ async function OpenShop() {
+    anime({
+        targets: '.Calculator',
+        translateX: 750,
+        translateY: 150,
+        duration: 500,
+        easing: 'easeInOutQuad'
+      })
+    parallaxCalc = false
+    document.getElementById('cash').innerText = `$${Cash}`
     document.getElementById('shop').style.display = 'block'
     const shuffled = sorting.sort(() => Math.random() - 0.5)
     let selected = shuffled.slice(0, 3)
     document.getElementById('showcase01').innerHTML = selected.join('')
     selected = shuffled.slice(4, 7)
     document.getElementById('showcase02').innerHTML = selected.join('')
+    anime({
+        targets: '.obj',
+        translateX: -880,
+        duration: 500,
+        easing: 'easeInOutQuad'
+        })
+    anime({
+        targets: '#shop',
+        translateX: 880,
+        duration: 500,
+        easing: 'easeInOutQuad'
+        })
+    anime({
+        targets: '#money',
+        translateX: -800,
+        translateY: -300,
+        scale: 0.9,
+        duration: 500,
+        easing: 'easeInOutQuad'
+        })
+    document.getElementById('congrats').innerText = "RESTAR"
+    await delay(20)
+    document.getElementById('congrats').innerText = "RESTA"
+    await delay(20)
+    document.getElementById('congrats').innerText = "REST"
+    await delay(20)
+    document.getElementById('congrats').innerText = "RES"
+    await delay(20)
+    document.getElementById('congrats').innerText = "RE"
+    await delay(20)
+    document.getElementById('congrats').innerText = "R"
+    await delay(20)
+    document.getElementById('congrats').innerText = ""
+    await delay(20)
+    document.getElementById('congrats').innerText = "C"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CO"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CON"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CONG"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CONGR"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CONGRA"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CONGRAT"
+    await delay(20)
+    document.getElementById('congrats').innerText = "CONGRATS"
+    await delay(20)
 }
 
 
-function Continue() {
+async function Continue() {
     ClickSnd()
-    document.getElementById('shop').style.display = 'none'
+    anime({
+        targets: '.obj',
+        translateX: 0,
+        duration: 800,
+        easing: 'easeInOutQuad'
+      })
+    anime({
+        targets: '.Calculator',
+        translateX: 0,
+        translateY: 0,
+        duration: 800,
+        easing: 'easeInOutQuad'
+      })
+    anime({
+        targets: '#money',
+        translateX: 0,
+        translateY: 0,
+        scale: 0.7,
+        duration: 500,
+        easing: 'easeInOutQuad'
+      })
+    anime({
+        targets: '#shop',
+        translateX: 0,
+        duration: 800,
+        easing: 'easeInOutQuad'
+      })
+    parallaxCalc = true
     document.getElementsByClassName('obj')[0].style.display = 'flex'
     document.getElementById('text-cur').innerText = NmbAtual
     document.getElementById('needed').innerText = NmbComp
@@ -366,6 +465,36 @@ function Continue() {
         document.getElementById('needed').innerText = NmbComp
     }
     display.innerText = NmbAtual
+    document.getElementById('congrats').innerText = "CONGRAT"
+    await delay(50)
+    document.getElementById('congrats').innerText = "CONGRA"
+    await delay(50)
+    document.getElementById('congrats').innerText = "CONGR"
+    await delay(50)
+    document.getElementById('congrats').innerText = "CONG"
+    await delay(50)
+    document.getElementById('congrats').innerText = "CON"
+    await delay(50)
+    document.getElementById('congrats').innerText = "CO"
+    await delay(50)
+    document.getElementById('congrats').innerText = "C"
+    await delay(50)
+    document.getElementById('congrats').innerText = ""
+    await delay(50)
+    document.getElementById('congrats').innerText = "R"
+    await delay(50)
+    document.getElementById('congrats').innerText = "RE"
+    await delay(50)
+    document.getElementById('congrats').innerText = "RES"
+    await delay(50)
+    document.getElementById('congrats').innerText = "REST"
+    await delay(50)
+    document.getElementById('congrats').innerText = "RESTA"
+    await delay(50)
+    document.getElementById('congrats').innerText = "RESTAR"
+    await delay(50)
+    document.getElementById('congrats').innerText = "RESTART"
+    await delay(50)
 }
 
 
@@ -397,11 +526,25 @@ document.addEventListener('mousemove', (event) => {
     const y2 = (event.clientY / window.innerHeight) * 2 - 3
     // Aplica a transformação para criar o efeito parallax
     background.style.transform = `translate(${x}%, ${y}%) scale(1.05)`
-    document.getElementsByClassName('Calculator')[0].style.transform = `translate(${x1}%, ${y1}%) scale(1)`
-    document.getElementsByClassName('obj')[0].style.transform = `translate(${x2}%, ${y2}%) scale(.8)`
+    if (parallaxCalc == true) {
+        document.getElementsByClassName('Calculator')[0].style.transform = `translate(${x1}%, ${y1}%) scale(1)`
+        document.getElementsByClassName('obj')[0].style.transform = `translate(${x2}%, ${y2}%) scale(.8)`
+    }
 });
+
+
+function restart() {
+    if (parallaxCalc == true) {
+        location.reload()
+    }
+}
+
 
 function ClickSnd() {
     BttnSnd.currentTime = 0
     BttnSnd.play()
+}
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -69,7 +69,7 @@ div#shop{
     padding-top: 30px;
     position: absolute;
     bottom: 70px;
-    left: 80px;
+    left: -800px;
     height: 480px;
     width: 510px;
     background-image: url(buttons/shop.png);
@@ -95,7 +95,7 @@ div#ShopBtns{
     flex-direction: column;
 }
 
-div#money{
+#money{
     transform: scale(.7);
     display: flex;
     flex-direction: column;
@@ -110,14 +110,24 @@ div#money{
     height: 480px;
     width: 560px;
 }
-div#cash{
+#congrats{
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 100px;
+    width: fit-content;
+    color: darksalmon;
+    font-weight: bolder;
+}
+#cash{
     position: absolute;
     font-weight: 700;
     font-size: 114px;
     top: 16%;
     left: 59%;
 }
-div#rounds{
+#rounds{
     transform: translate(-37%, 3%);
     left: 50%;
     color: #444444;
@@ -128,7 +138,18 @@ div#rounds{
 }
 
 
-
+#sound{
+    opacity: .2;
+    scale: 0.7;
+    cursor: pointer;
+    width: 150px;
+    height: 130px;
+    top: 85px;
+    left: 190px;
+    position: absolute;
+    z-index: 10;
+    transform: rotate(10deg);
+}
 .obj{
     transform: scale(.8);
     z-index: 10;
