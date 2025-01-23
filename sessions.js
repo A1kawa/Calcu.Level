@@ -1,5 +1,5 @@
-
-
+let BossBattle = false
+var Quais = []
 let parallaxCalc = true
 const passou = new Audio('sounds/passed.mp3')
 let BossSnd
@@ -11,11 +11,14 @@ var operacao
 var NmbAtual = 23
 var NmbComp = 55
 var Cash = 0 
-var Lvl = 1
+var Lvl = 4
 var display = document.getElementById('calcDpl')
 const background = document.querySelector('.parallax-background')
 
 //Variaveis de quantidades de botoes
+var energy = 1
+var BotVar = 0
+var BotVar1 = 0
 var Bot00 = 2
 var Bot01 = 2
 var Bot02 = 2
@@ -30,7 +33,7 @@ var BotMais = 2
 var BotMenos = 2
 var BotMulti = 2
 var BotDivi = 2
-var BotChrg = 2
+var BotChrg = 4
 var BotRoll = 0
 var BotAppend = 0
 var BotAppend01 = 0
@@ -56,10 +59,10 @@ function digito(nmb) {
     BttnSnd.play()
     switch (nmb) {
         case 0:
-            if (Bot00 > 0) {
+            if (Bot00 >= energy) {
                 if (display.innerText !== "") {
                     if (NmbAtual == 0) {
-                        Bot00--
+                        Bot00 = Bot00-energy
                         console.log(nmb)
                         console.log('Voce tem mais ', Bot00, 'usos')
                         display.innerText = display.innerText + nmb
@@ -69,9 +72,9 @@ function digito(nmb) {
             }
             break;
         case 1:
-            if (Bot01 > 0) {
+            if (Bot01 >= energy) {
                 if (NmbAtual == 0) {
-                    Bot01--
+                    Bot01=Bot01-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot01, 'usos')
                     display.innerText = display.innerText + nmb
@@ -80,9 +83,9 @@ function digito(nmb) {
             }
             break;
         case 2:
-            if (Bot02 > 0) {
+            if (Bot02 >=energy) {
                 if (NmbAtual == 0) {
-                    Bot02--
+                    Bot02=Bot02-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot02, 'usos')
                     display.innerText = display.innerText + nmb
@@ -91,9 +94,9 @@ function digito(nmb) {
                 }
             break;
         case 3:
-            if (Bot03 > 0) {
+            if (Bot03 >=energy) {
                 if (NmbAtual == 0) {
-                    Bot03--
+                    Bot03=Bot03-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot03, 'usos')
                     display.innerText = display.innerText + nmb
@@ -102,9 +105,9 @@ function digito(nmb) {
                 }
             break;
         case 4:
-            if (Bot04 > 0) {
+            if (Bot04 >=energy) {
                 if (NmbAtual == 0) {
-                    Bot04--
+                    Bot04=Bot04-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot04, 'usos')
                     display.innerText = display.innerText + nmb
@@ -113,9 +116,9 @@ function digito(nmb) {
                 }
             break;
         case 5:
-            if (Bot05 > 0) {
+            if (Bot05 >=energy) {
                 if (NmbAtual == 0) {
-                    Bot05--
+                    Bot05 = Bot05-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot05, 'usos')
                     display.innerText = display.innerText + nmb
@@ -124,9 +127,9 @@ function digito(nmb) {
             }
             break;
         case 6:
-            if (Bot06 > 0) {
+            if (Bot06 >= energy) {
                 if (NmbAtual == 0) {
-                    Bot06--
+                    Bot06 = Bot06-energy
                     console.log(nmb)
                     console.log('Voce tem mais ', Bot06, 'usos')
                     display.innerText = display.innerText + nmb
@@ -135,33 +138,27 @@ function digito(nmb) {
                     }
             break;
         case 7:
-            if (Bot07 > 0) {
+            if (Bot07 >= energy) {
                 if (NmbAtual == 0) {
-                    Bot07--
-                    console.log(nmb)
-                    console.log('Voce tem mais ', Bot07, 'usos')
+                    Bot07 = Bot07-energy
                     display.innerText = display.innerText + nmb
                     AttTurns()
                     }
                 }
             break;
         case 8:
-            if (Bot08 > 0) {
+            if (Bot08 >= energy) {
                 if (NmbAtual == 0) {
-                    Bot08--
-                    console.log(nmb)
-                    console.log('Voce tem mais ', Bot08, 'usos')
+                    Bot08 = Bot08-energy
                     display.innerText = display.innerText + nmb
                     AttTurns()
                     }
                 }
             break;
         case 9:
-        if (Bot09 > 0) {
+        if (Bot09 >= energy) {
             if (NmbAtual == 0) {
-                Bot09--
-                console.log(nmb)
-                console.log('Voce tem mais ', Bot09, 'usos')
+                Bot09 = Bot09-energy
                 display.innerText = display.innerText + nmb
                 AttTurns()
                 }
@@ -173,24 +170,23 @@ function digito(nmb) {
 function Reverse() {
     BttnSnd.currentTime = 0
     ClickSnd()
-    if (BotRev > 0) {
-        BotRev--
+    if (BotRev >= energy) {
+        BotRev = BotRev - energy
         document.getElementById('rev').textContent = BotConv
 
-        let dezena = Math.floor(NmbComp / 10)
-        let unidade = NmbComp % 10
-        console.log('sua unidade eh ', unidade, 'e sua dezena eh ', dezena)
-        NmbComp = `${unidade}${dezena}`
-        NmbComp = Number.parseInt(NmbComp)
+        let required = NmbComp
+        NmbComp = NmbAtual
+        NmbAtual = required
         document.getElementById('needed').innerText = NmbComp
-
+        document.getElementById('text-cur').innerText = NmbAtual
+        display.innerText = NmbAtual
     }
 }
 function Convert(){
     BttnSnd.currentTime = 0
     ClickSnd()
-    if (BotConv > 0) {
-        BotConv--
+    if (BotConv >= energy) {
+        BotConv = BotConv-energy
         document.getElementById('conv').textContent = BotConv
         NmbAtual = 25
         display.innerText = NmbAtual
@@ -199,7 +195,7 @@ function Convert(){
 }
 function Near() {
     ClickSnd()
-    if (BotNear > 0) {
+    if (BotNear >= energy) {
         console.log('near foi apertado')
         const NearNmb = NmbComp - NmbAtual
         if (NmbAtual > NmbComp){
@@ -209,13 +205,13 @@ function Near() {
             NmbAtual = NmbComp
             display.innerText = NmbAtual
             document.getElementById('text-cur').innerText = NmbAtual
-            BotNear--
+            BotNear = BotNear-energy
             document.getElementById('near').textContent = BotNear
         } else {
             NmbAtual = NmbAtual + 10
             display.innerText = NmbAtual
             document.getElementById('text-cur').innerText = NmbAtual
-            BotNear--
+            BotNear = BotNear-energy
             document.getElementById('near').textContent = BotNear
         }
         if (BotNear == 0) {
@@ -225,79 +221,105 @@ function Near() {
 }
 function Append01() {
     ClickSnd()
-    if (BotAppend01 > 0) {
-        BotAppend01--
-        document.getElementById('append01').textContent = BotAppend
-        display.innerText = display.innerText + '1'
+    if (BotAppend01 >= energy) {
+        BotAppend01 = BotAppend01-energy
+        document.getElementById('append01').textContent = BotAppend01
+        display.innerText = '1' + display.innerText
         NmbAtual = Number.parseInt(display.innerText)
         document.getElementById('text-cur').innerText = NmbAtual
     }
 }
 function Append() {
     ClickSnd()
-    if (BotAppend > 0) {
-        BotAppend--
+    if (BotAppend >= energy) {
+        BotAppend = BotAppend-energy
         document.getElementById('append').textContent = BotAppend
-        display.innerText = display.innerText + '4'
+        display.innerText = display.innerText + '1'
         NmbAtual = Number.parseInt(display.innerText)
         document.getElementById('text-cur').innerText = NmbAtual
     }
 }
 function Roll() {
     ClickSnd()
-    if (BotRoll > 0) {
-        BotRoll--
+    if (BotRoll >= energy) {
+        BotRoll = BotRoll-energy
         document.getElementById('roll').textContent = BotRoll
         NmbComp = Math.floor(Math.random() * 100) + 1
         document.getElementById('needed').innerText = NmbComp
     }
 }
+function battery() {
+if (BotChrg >= energy){
+    const digits = [Bot00, Bot01, Bot02, Bot03, Bot04, Bot05, Bot06, Bot07, Bot08, Bot09]
+    const index = Math.floor(Math.random() * 9)
+    digits[index]++
+    document.getElementById(index).innerText = digits[index]
+    switch (index) {
+        case 0: Bot00 = digits[index]; break;
+        case 1: Bot01 = digits[index]; break;
+        case 2: Bot02 = digits[index]; break;
+        case 3: Bot03 = digits[index]; break;
+        case 4: Bot04 = digits[index]; break;
+        case 5: Bot05 = digits[index]; break;
+        case 6: Bot06 = digits[index]; break;
+        case 7: Bot07 = digits[index]; break;
+        case 8: Bot08 = digits[index]; break;
+        case 9: Bot09 = digits[index]; break;
+    }
+    BotChrg = BotChrg - energy
+    AttTurns()
+}
+}
+
 function adicao() {
     ClickSnd()
-    if (BotMais > 0) {
+    if (BotMais >= energy && operacao == '') {
         Nmb01 = Number.parseInt(display.innerText)
         operacao = "+"
         NmbAtual = 0
         display.innerText = ''
-        BotMais--
+        BotMais = BotMais-energy
         AttTurns()
     }
 }
 function subtracao() {
     ClickSnd()
-    if (BotMenos > 0) {
+    if (BotMenos >= energy && operacao == '') {
         Nmb01 = Number.parseInt(display.innerText)
         operacao = "-"
         NmbAtual = 0
         display.innerText = ''
-        BotMenos--
+        BotMenos = BotMenos-energy
         AttTurns()
     }
 }
 function divisao() {
     ClickSnd()
-    if (BotDivi > 0) {
+    if (BotDivi >= energy && operacao == '') {
         Nmb01 = Number.parseInt(display.innerText)
         operacao = "/"
         NmbAtual = 0
         display.innerText = ''
-        BotDivi--
+        BotDivi = BotDivi-energy
         AttTurns()
     }
 }
 function multiplicacao() {
     ClickSnd()
-    if (BotMulti > 0) {
+    if (BotMulti >= energy && operacao == '') {
         Nmb01 = Number.parseInt(display.innerText)
         NmbAtual = 0
         operacao = "x"
         display.innerText = ''
-        BotMulti--
+        BotMulti = BotMulti-energy
         AttTurns()
     }
 }
 
 function send() {
+    if (display.innerText == ''){
+        return
+    }
    switch (operacao) {
     case "":
         NmbAtual = Number.parseInt(display.innerText)
@@ -310,31 +332,35 @@ function send() {
     case "-":
         Nmb02 = Number.parseInt(display.innerText)
         NmbAtual = (Nmb01) - (Nmb02)
-        display.innerText = NmbAtual
         break;
     case "x":
         Nmb02 = Number.parseInt(display.innerText)
         NmbAtual = (Nmb01) * (Nmb02)
-        display.innerText = NmbAtual
         break;
     case "/":
         Nmb02 = Number.parseInt(display.innerText)
         NmbAtual = Number.parseInt((Nmb01) / (Nmb02))
-        display.innerText = NmbAtual
         break;
    
     default:
         break;
    }
-
+   display.innerText = NmbAtual
    document.getElementById('text-cur').innerText = NmbAtual
    operacao = ""
 
    if (NmbAtual == NmbComp) {
     passou.volume = .4
-    passou.play()
     Cash = Cash + 23
     Lvl++
+    if (Lvl == 21) {
+
+        setTimeout(() => {
+            window.location.href = "buttons/olho.html"
+            }, 1000)
+        return
+    }
+    passou.play()
     NmbComp = Math.floor(Math.random() * 100) + 1
     NmbAtual = Math.floor(Math.random() * 100) + 1
     OpenShop()
@@ -360,10 +386,42 @@ function Reroll() {
 }
 
  async function OpenShop() {
+    if (BossBattle == true) {
+        BossBattle = false
+        if (document.getElementById('error').style.display == 'block') {
+            document.getElementById('error').style.display = 'none'
+        }
+        if (energy == 2) {
+            energy--
+        }
+        anime({
+            targets: '#bossDesc',
+            translateY: 0,
+            duration: 200,
+            easing: 'easeInOutQuad'
+        })
+        await delay(300)
+        anime({
+                targets: '#bossLeg',
+                scale: 0,
+                duration: 200,
+                easing: 'easeInOutQuad'
+            })
+            await delay(400)
+        anime({
+            targets: '#bossImg',
+            scale: 0,
+            borderRadius: ['0%', '50%'],
+            duration: 200,
+            easing: 'easeInOutQuad'
+        })
+        await delay(400)
+    }
     anime({
         targets: '.Calculator',
-        translateX: 750,
-        translateY: 150,
+        translateX: 1100,
+        translateY: 300,
+        scale: 0.8,
         duration: 500,
         easing: 'easeInOutQuad'
       })
@@ -389,7 +447,7 @@ function Reroll() {
         })
     anime({
         targets: '#money',
-        translateX: -800,
+        translateX: -710,
         translateY: -300,
         scale: 0.9,
         duration: 500,
@@ -426,6 +484,19 @@ function Reroll() {
     document.getElementById('congrats').innerText = "CONGRATS"
     await delay(20)
     document.getElementById('congrats').style.cursor = "default"
+
+    if (Quais[0] == 'BotMais') {
+        BotMais = BotVar
+        Bot02 = BotVar1
+        Quais = []
+    }
+    if (Quais[0] == 'BotMulti') {
+        BotMulti = BotVar
+        Bot03 = BotVar1
+        Quais = []
+    }
+
+    
 }
 
 
@@ -441,6 +512,7 @@ async function Continue() {
         targets: '.Calculator',
         translateX: 0,
         translateY: 0,
+        scale: 1,
         duration: 800,
         easing: 'easeInOutQuad'
       })
@@ -463,9 +535,10 @@ async function Continue() {
     document.getElementById('text-cur').innerText = NmbAtual
     document.getElementById('needed').innerText = NmbComp
     document.getElementById('rounds').innerText = `${Lvl}/20`
-    if (Lvl == 5) {
-        NmbComp = Math.floor(Math.random() * 1000) + 1
-        document.getElementById('needed').innerText = NmbComp
+    if (Lvl == 5 || Lvl == 10 || Lvl == 15 || Lvl == 20) {
+        BossBattle = true
+        const boss = Math.floor(Math.random() * 5) + 1
+        SetBoss(3) 
     }
     display.innerText = NmbAtual
     document.getElementById('congrats').innerText = "CONGRAT"
@@ -503,14 +576,10 @@ async function Continue() {
 
 function AttTurns() {
     document.getElementById("power").textContent = BotChrg
-    document.getElementById("+").textContent = BotMais
     document.getElementById("-").textContent = BotMenos
-    document.getElementById("x").textContent = BotMulti
     document.getElementById("/").textContent = BotDivi
     document.getElementById("0").textContent = Bot00
     document.getElementById("1").textContent = Bot01
-    document.getElementById("2").textContent = Bot02
-    document.getElementById("3").textContent = Bot03
     document.getElementById("4").textContent = Bot04
     document.getElementById("5").textContent = Bot05
     document.getElementById("6").textContent = Bot06
@@ -518,13 +587,23 @@ function AttTurns() {
     document.getElementById("8").textContent = Bot08
     document.getElementById("9").textContent = Bot09
     document.getElementById('cash').innerText = `$${Cash}`
+    if (Quais[0] == 'BotMais') {
+    } else {
+        document.getElementById("+").textContent = BotMais
+        document.getElementById("2").textContent = Bot02
+    }
+    if (Quais[0] == 'BotMulti') {
+    } else {
+        document.getElementById("x").textContent = BotMulti
+        document.getElementById("3").textContent = Bot03
+    }
 }
 // Adiciona o evento de movimento do mouse
 document.addEventListener('mousemove', (event) => {
     const x = (event.clientX / window.innerWidth) * 3 - 5
     const y = (event.clientY / window.innerHeight) * 3 - 5
-    const x1 = (event.clientX / window.innerWidth) * 4 - 70
-    const y1 = (event.clientY / window.innerHeight) * 4 - 10
+    const x1 = (event.clientX / window.innerWidth) * 10 - 65
+    const y1 = (event.clientY / window.innerHeight) * 8 - 4
     const x2 = (event.clientX / window.innerWidth) * 2 - 0
     const y2 = (event.clientY / window.innerHeight) * 2 - 3
     // Aplica a transformação para criar o efeito parallax
@@ -550,4 +629,15 @@ function ClickSnd() {
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function AttDisp(value) {
+    display.innerText = value
+}
+
+function LegOn(screen, button) {
+    document.getElementById('leg').src = screen
+    document.getElementById(button).addEventListener('mouseleave', function () {
+        document.getElementById('leg').src = ''
+    })
 }
