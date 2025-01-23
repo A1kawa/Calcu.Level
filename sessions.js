@@ -11,7 +11,7 @@ var operacao
 var NmbAtual = 23
 var NmbComp = 55
 var Cash = 0 
-var Lvl = 4
+var Lvl = 1
 var display = document.getElementById('calcDpl')
 const background = document.querySelector('.parallax-background')
 
@@ -538,7 +538,7 @@ async function Continue() {
     if (Lvl == 5 || Lvl == 10 || Lvl == 15 || Lvl == 20) {
         BossBattle = true
         const boss = Math.floor(Math.random() * 5) + 1
-        SetBoss(3) 
+        SetBoss(boss) 
     }
     display.innerText = NmbAtual
     document.getElementById('congrats').innerText = "CONGRAT"
