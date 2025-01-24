@@ -15,7 +15,9 @@
     and were intended only for purpose of experiment, tests and most important, entertainment
 
     any comercial use of media regarding The Eye is strictly prohibited and will be terminated
-    praised be Yrihm
+
+    
+    PRAISED BE YRIHM
 
  ______________________
 [the 1st Eye experiment]
