@@ -9,15 +9,27 @@
 
 
 
-if trying our litte experiment, remember always to start with Landing.hmtl
+    if trying our litte experiment, remember always to start with Landing.hmtl
+
+    these archives and media were done solely by Felipe Teixeira a.k.a Aikawa
+    and were intended only for purpose of experiment, tests and most important, entertainment
+
+    any comercial use of media regarding The Eye is strictly prohibited and will be terminated
+    praised be Yrihm
+
+ ______________________
+[the 1st Eye experiment]
 
 
-PRAISED BE YRIHM
+ ______________________
+
+
+
 
 
 FOLLOW THE EYE
 
-
+ ______________________
 OBEY
 
 
@@ -36,5 +48,4 @@ OBEY
 
 
 
- ______________________
-|the 1st Eye experiment|
+
