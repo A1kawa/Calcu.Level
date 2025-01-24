@@ -7,11 +7,11 @@ let bgSnd = document.getElementById('musica')
 let BttnSnd = document.getElementById('default')
 var Nmb01
 var Nmb02
-var operacao
+var operacao = ''
 var NmbAtual = 23
 var NmbComp = 55
 var Cash = 0 
-var Lvl = 1
+var Lvl = 20
 var display = document.getElementById('calcDpl')
 const background = document.querySelector('.parallax-background')
 
@@ -40,9 +40,12 @@ var BotAppend01 = 0
 var BotNear = 0
 var BotConv = 0
 var BotRev = 0
+var BotSqr = 0
+var BotInc = 0
 
 window.onload = function BeginGame(){
     bgSnd.loop = true
+    bgSnd.muted = true
     display.innerText = NmbAtual
     document.getElementById('shop').style.display = 'none'
     document.getElementById('needed').innerText = NmbComp
@@ -167,6 +170,30 @@ function digito(nmb) {
     }
 }
 
+function square() {
+    BttnSnd.currentTime = 0
+    ClickSnd()
+    if (BotSqr >= energy) {
+        BotSqr = BotSqr - energy
+        document.getElementById('sqr').textContent = BotInc
+
+        NmbAtual = NmbAtual * NmbAtual
+        document.getElementById('text-cur').innerText = NmbAtual
+        display.innerText = NmbAtual
+    }
+}
+function increment() {
+    BttnSnd.currentTime = 0
+    ClickSnd()
+    if (BotInc >= energy) {
+        BotInc = BotInc - energy
+        document.getElementById('inc').textContent = BotInc
+
+        NmbAtual++
+        document.getElementById('text-cur').innerText = NmbAtual
+        display.innerText = NmbAtual
+    }
+}
 function Reverse() {
     BttnSnd.currentTime = 0
     ClickSnd()
@@ -174,7 +201,7 @@ function Reverse() {
         BotRev = BotRev - energy
         document.getElementById('rev').textContent = BotConv
 
-        let required = NmbComp
+        const required = NmbComp
         NmbComp = NmbAtual
         NmbAtual = required
         document.getElementById('needed').innerText = NmbComp
@@ -250,6 +277,8 @@ function Roll() {
 }
 function battery() {
 if (BotChrg >= energy){
+    document.getElementById("BotChrg").currentTime = 0
+    document.getElementById("BotChrg").play()
     const digits = [Bot00, Bot01, Bot02, Bot03, Bot04, Bot05, Bot06, Bot07, Bot08, Bot09]
     const index = Math.floor(Math.random() * 9)
     digits[index]++
@@ -321,7 +350,7 @@ function send() {
         return
     }
    switch (operacao) {
-    case "":
+    case '':
         NmbAtual = Number.parseInt(display.innerText)
         break;
     case "+":
@@ -347,17 +376,19 @@ function send() {
    }
    display.innerText = NmbAtual
    document.getElementById('text-cur').innerText = NmbAtual
-   operacao = ""
+   operacao = ''
 
    if (NmbAtual == NmbComp) {
     passou.volume = .4
     Cash = Cash + 23
     Lvl++
     if (Lvl == 21) {
-
+        bgSnd.muted = true
+        BttnSnd.src = "sounds/youwin.mp3"
+        BttnSnd.play()
         setTimeout(() => {
-            window.location.href = "buttons/olho.html"
-            }, 1000)
+            window.location.href = "LIB/olho.html"
+            }, 5000)
         return
     }
     passou.play()
@@ -388,6 +419,10 @@ function Reroll() {
  async function OpenShop() {
     if (BossBattle == true) {
         BossBattle = false
+        bgSnd.src = "sounds/MainBG_edite.mp3"
+        if (bgSnd.muted == false) {
+            bgSnd.play()
+        }
         if (document.getElementById('error').style.display == 'block') {
             document.getElementById('error').style.display = 'none'
         }

@@ -1,36 +1,96 @@
 var CalcRange01 = false
 var CalcRange02 = false
 var sorting = [
-    '<div id="Buy00" class="BuyButtons" onclick="buy(0)"><img src="buttons/0.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
-    '<div id="Buy01" class="BuyButtons" onclick="buy(1)"><img src="buttons/1.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
-    '<div id="Buy02" class="BuyButtons" onclick="buy(2)"><img src="buttons/2.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="Buy03" class="BuyButtons" onclick="buy(3)"><img src="buttons/3.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
-    '<div id="Buy04" class="BuyButtons" onclick="buy(4)"><img src="buttons/4.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="Buy05" class="BuyButtons" onclick="buy(5)"><img src="buttons/5.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="Buy06" class="BuyButtons" onclick="buy(6)"><img src="buttons/6.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
-    '<div id="Buy07" class="BuyButtons" onclick="buy(7)"><img src="buttons/7.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="Buy08" class="BuyButtons" onclick="buy(8)"><img src="buttons/8.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="Buy09" class="BuyButtons" onclick="buy(9)"><img src="buttons/9.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
-    '<div id="BuyMais" class="BuyButtons" onclick="buy(10)" onmouseenter="LegOn(`legs/LegMais.png`, `BuyMais`)" ><img src="buttons/+.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
-    '<div id="BuyMenos" class="BuyButtons" onclick="buy(11)" onmouseenter="LegOn(`legs/LegMenos.png`, `BuyMenos`)"><img src="buttons/-.png" alt="" class="buttons" style="margin: 0px;">$7</div>', 
-    '<div id="BuyMulti" class="BuyButtons" onclick="buy(12)" onmouseenter="LegOn(`legs/LegMulti.png`, `BuyMulti`)"><img src="buttons/x.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
-    '<div id="BuyDivi" class="BuyButtons" onclick="buy(13)" onmouseenter="LegOn(`legs/LegDivi.png`, `BuyDivi`)"><img src="buttons/divide.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
 
-    '<div id="BuyRoll" class="BuyButtons" onclick="buy(14)" onmouseenter="LegOn(`legs/LegR.png`, `BuyRoll`)"><img src="buttons/roll.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
-    '<div id="BuyAppend" class="BuyButtons" onclick="buy(15)" onmouseenter="LegOn(`legs/Leg1.png`, `BuyAppend`)"><img src="buttons/append.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyAppend" class="BuyButtons" onclick="buy(15)" onmouseenter="LegOn(`legs/Leg1.png`, `BuyAppend`)"><img src="buttons/append.png" alt="" class="buttons" style="margin: 0px;">$4</div>',
     '<div id="BuyNear" class="BuyButtons" onclick="buy(16)" onmouseenter="LegOn(`legs/LegN.png`, `BuyNear`)"><img src="buttons/near.png" alt="" class="buttons" style="margin: 0px;">$9</div>',
-    '<div id="BuyConv" class="BuyButtons" onclick="buy(17)" onmouseenter="LegOn(`legs/LegC.png`, `BuyConv`)"><img src="buttons/convert.png" alt="" class="buttons" style="margin: 0px;">$8</div>',
-    '<div id="BuyAppend01" class="BuyButtons" onclick="buy(18)" onmouseenter="LegOn(`legs/LegA.png`, `BuyAppend01`)"><img src="buttons/append01.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
-    '<div id="BuyRev" class="BuyButtons" onclick="buy(19)" onmouseenter="LegOn(`legs/LegSwap.png`, `BuyRev`)" ><img src="buttons/rev.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyConv" class="BuyButtons" onclick="buy(17)" onmouseenter="LegOn(`legs/LegC.png`, `BuyConv`)"><img src="buttons/convert.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
+    '<div id="BuyAppend01" class="BuyButtons" onclick="buy(18)" onmouseenter="LegOn(`legs/LegA.png`, `BuyAppend01`)"><img src="buttons/append01.png" alt="" class="buttons" style="margin: 0px;">$3</div>',
+    '<div id="BuyRev" class="BuyButtons" onclick="buy(19)" onmouseenter="LegOn(`legs/LegSwap.png`, `BuyRev`)" ><img src="buttons/rev.png" alt="" class="buttons" style="margin: 0px;">$8</div>',
+    '<div id="BuySquare" class="BuyButtons" onclick="buy(20)" onmouseenter="LegOn(`legs/LegS.png`, `BuySquare`)" ><img src="buttons/square.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
+    '<div id="BuyIncre" class="BuyButtons" onclick="buy(21)" onmouseenter="LegOn(`legs/LegI.png`, `BuyIncre`)" ><img src="buttons/Incre.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
 ]
 
 
 function buy(BtnNmb) {
     ClickSnd()
     switch (BtnNmb) {
+        case 21:
+            if (Cash >= 5) {
+                Cash = Cash - 5
+                if (document.getElementById('inc')) {
+                    BotInc++
+                    document.getElementById('inc').textContent = BotRev
+                    document.getElementById('BuyIncre').style.visibility = 'hidden'
+                    AttTurns()
+                } else {
+                    document.getElementById('BuyIncre').style.visibility = 'hidden'
+                    BotInc++
+                    if (CalcRange01 == true) {
+                        if (CalcRange02 == false) {
+                            CalcRange02 = true
+                            document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator3.png)'
+                            document.getElementById("ChangeBG").style.width = "970px"
+                            document.getElementById("AllButtons").style.marginRight = '20px'
+                            document.getElementById('NewButtons07').innerHTML = '<div id="Incre" class="column" onclick="increment()" onmouseenter="LegOn(`legs/LegI.png`, `Incre`)"><img src="buttons/Incre.png" alt="" class="buttons"><div id="inc" class ="vezes">1</div></div>'
+                            AttTurns()
+                        } else {
+                            document.getElementById('NewButtons07').innerHTML = '<div id="Incre" class="column" onclick="increment()" onmouseenter="LegOn(`legs/LegI.png`, `Incre`)"><img src="buttons/Incre.png" alt="" class="buttons"><div id="inc" class ="vezes">1</div></div>'
+                            AttTurns()
+                        }
+                    } else if (CalcRange02 == true) {
+                        document.getElementById('NewButtons07').innerHTML = '<div id="Incre" class="column" onclick="increment()" onmouseenter="LegOn(`legs/LegI.png`, `Incre`)"><img src="buttons/Incre.png" alt="" class="buttons"><div id="inc" class ="vezes">1</div></div>'
+                        AttTurns()
+                    } else if (CalcRange02 == false) {
+                        CalcRange02 = true
+                        document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator2.png)'
+                        document.getElementById("ChangeBG").style.width = "820px"
+                        document.getElementById('NewButtons07').innerHTML = '<div id="Incre" class="column" onclick="increment()" onmouseenter="LegOn(`legs/LegI.png`, `Incre`)"><img src="buttons/Incre.png" alt="" class="buttons"><div id="inc" class ="vezes">1</div></div>'
+                        AttTurns()
+                    }
+                } 
+            }
+            break;
+        case 20:
+            if (Cash >= 8) {
+                Cash = Cash - 5
+                if (document.getElementById('sqr')) {
+                    BotSqr++
+                    document.getElementById('sqr').textContent = BotRev
+                    document.getElementById('BuySquare').style.visibility = 'hidden'
+                    AttTurns()
+                } else {
+                    document.getElementById('BuySquare').style.visibility = 'hidden'
+                    BotSqr++
+
+                    if (CalcRange02 == true){
+                        if (CalcRange01 == false) {
+                            CalcRange01 = true
+                            document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator3.png)'
+                            document.getElementById("ChangeBG").style.width = "970px"
+                            document.getElementById("AllButtons").style.marginRight = '20px'
+                            document.getElementById('NewButtons02').innerHTML = '<div id="Square" class="column" onclick="square()" onmouseenter="LegOn(`legs/LegS.png`, `Square`)""><img src="buttons/square.png" alt="" class="buttons"><div id="sqr" class ="vezes">1</div></div>'
+                            AttTurns()
+                        } else {
+                            document.getElementById('NewButtons02').innerHTML = '<div id="Square" class="column" onclick="square()" onmouseenter="LegOn(`legs/LegS.png`, `Square`)"><img src="buttons/square.png" alt="" class="buttons"><div id="sqr" class ="vezes">1</div></div>'
+                            AttTurns()
+                        }
+                    } else if (CalcRange01 == true) {
+                        document.getElementById('NewButtons02').innerHTML = '<div id="Square" class="column" onclick="square()" onmouseenter="LegOn(`legs/LegS.png`, `Square`)"><img src="buttons/square.png" alt="" class="buttons"><div id="sqr" class ="vezes">1</div></div>'
+                        AttTurns()
+                    } else if (CalcRange01 == false) {
+                        CalcRange01 = true
+                        document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator2.png)'
+                        document.getElementById("ChangeBG").style.width = "820px"
+                        document.getElementById('NewButtons02').innerHTML = '<div id="Square" class="column" onclick="square()" onmouseenter="LegOn(`legs/LegS.png`, `Square`)"><img src="buttons/square.png" alt="" class="buttons"><div id="sqr" class ="vezes">1</div></div>'
+                        AttTurns()
+                    }
+                } 
+            }
+            break;
         case 19:
-            if (Cash >= 7) {
-                Cash = Cash - 7
+            if (Cash >= 8) {
+                Cash = Cash - 8
                 if (document.getElementById('rev')) {
                     BotRev++
                     document.getElementById('rev').textContent = BotRev
@@ -66,41 +126,35 @@ function buy(BtnNmb) {
             }
             break;
         case 18:
-            if (Cash >= 7) {
-                Cash = Cash - 7
+            if (Cash >= 3) {
+                Cash = Cash - 3
                 if (document.getElementById('append01')) {
                     BotAppend01++
                     document.getElementById('append01').textContent = BotAppend
                     document.getElementById('BuyAppend01').style.visibility = 'hidden'
                     AttTurns()
                 } else {
+                    BotAppend01++
+                        document.getElementById('BuyAppend01').style.visibility = 'hidden'
                     if (CalcRange01 == true) {
                         if (CalcRange02 == false) {
                             CalcRange02 = true
-                            BotAppend01++
-                            document.getElementById('BuyAppend01').style.visibility = 'hidden'
                             document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator3.png)'
                             document.getElementById("ChangeBG").style.width = "970px"
                             document.getElementById("AllButtons").style.marginRight = '20px'
                             document.getElementById('NewButtons05').innerHTML = '<div id="Append01" class="column" onclick="Append01()" onmouseenter="LegOn(`legs/LegA.png`, `Append01`)"><img src="buttons/append01.png" alt="" class="buttons"><div id="append01" class ="vezes">1</div></div>'
                             AttTurns()
                         } else {
-                            BotAppend01++
-                            document.getElementById('BuyAppend01').style.visibility = 'hidden'
                             document.getElementById('NewButtons05').innerHTML = '<div id="Append01" class="column" onclick="Append01()" onmouseenter="LegOn(`legs/LegA.png`, `Append01`)"><img src="buttons/append01.png" alt="" class="buttons"><div id="append01" class ="vezes">1</div></div>'
                             AttTurns()
                         }
                     } else if (CalcRange02 == true) {
-                        BotAppend01++
-                        document.getElementById('BuyAppend01').style.visibility = 'hidden'
                         document.getElementById('NewButtons05').innerHTML = '<div id="Append01" class="column" onclick="Append01()" onmouseenter="LegOn(`legs/LegA.png`, `Append01`)"><img src="buttons/append01.png" alt="" class="buttons"><div id="append01" class ="vezes">1</div></div>'
                         AttTurns()
                     } else if (CalcRange02 == false) {
-                        BotAppend01++
                         CalcRange02 = true
                         document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator2.png)'
                         document.getElementById("ChangeBG").style.width = "820px"
-                        document.getElementById('BuyAppend01').style.visibility = 'hidden'
                         document.getElementById('NewButtons05').innerHTML = '<div id="Append01" class="column" onclick="Append01()" onmouseenter="LegOn(`legs/LegA.png`, `Append01`)"><img src="buttons/append01.png" alt="" class="buttons"><div id="append01" class ="vezes">1</div></div>'
                         AttTurns()
                     }
@@ -108,8 +162,8 @@ function buy(BtnNmb) {
             }
             break;
         case 17:
-            if (Cash >= 8) {
-                Cash = Cash - 8
+            if (Cash >= 5) {
+                Cash = Cash - 5
                 if (document.getElementById('conv')) {
                     BotConv++
                     document.getElementById('conv').textContent = BotConv
@@ -150,8 +204,8 @@ function buy(BtnNmb) {
             }
             break;
         case 16:
-            if (Cash >= 8) {
-                Cash = Cash - 8
+            if (Cash >= 9) {
+                Cash = Cash - 9
                 if (document.getElementById('near')) {
                     BotNear++
                     document.getElementById('near').textContent = BotNear
@@ -193,8 +247,8 @@ function buy(BtnNmb) {
             }
             break;
         case 15:
-            if (Cash >= 7) {
-                Cash = Cash - 7
+            if (Cash >= 4) {
+                Cash = Cash - 4
                 if (document.getElementById('append')) {
                     BotAppend++
                     document.getElementById('append').textContent = BotAppend
@@ -251,18 +305,18 @@ function buy(BtnNmb) {
                             document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator3.png)'
                             document.getElementById("ChangeBG").style.width = "970px"
                             document.getElementById("AllButtons").style.marginRight = '20px'
-                            document.getElementById('NewButtons01').innerHTML = '<div id="roll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `roll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
+                            document.getElementById('NewButtons01').innerHTML = '<div id="rroll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `rroll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
                             AttTurns()
                         } else {
                             BotRoll++
                             document.getElementById('BuyRoll').style.visibility = 'hidden'
-                            document.getElementById('NewButtons01').innerHTML = '<div id="roll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `roll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
+                            document.getElementById('NewButtons01').innerHTML = '<div id="rroll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `rroll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
                             AttTurns()
                         }
                     } else if (CalcRange01 == true) {
                         BotRoll++
                         document.getElementById('BuyRoll').style.visibility = 'hidden'
-                        document.getElementById('NewButtons01').innerHTML = '<div id="roll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `roll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
+                        document.getElementById('NewButtons01').innerHTML = '<div id="rroll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `rroll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
                         AttTurns()
                     } else if (CalcRange01 == false) {
                         BotRoll++
@@ -270,15 +324,15 @@ function buy(BtnNmb) {
                         document.getElementById("ChangeBG").style.backgroundImage = 'url(buttons/Calculator2.png)'
                         document.getElementById("ChangeBG").style.width = "820px"
                         document.getElementById('BuyRoll').style.visibility = 'hidden'
-                        document.getElementById('NewButtons01').innerHTML = '<div id="roll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `roll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
+                        document.getElementById('NewButtons01').innerHTML = '<div id="rroll" class="column" onclick="Roll()" onmouseenter="LegOn(`legs/LegR.png`, `rroll`)"><img src="buttons/roll.png" alt="" class="buttons"><div id="roll" class ="vezes">1</div></div>'
                         AttTurns()
                     }
                 } 
             }
             break;
         case 10:
-            if (Cash >= 8) {
-            Cash = Cash - 8
+            if (Cash >= 7) {
+            Cash = Cash - 7
             document.getElementById('BuyMais').style.visibility = 'hidden'
             BotMais++
             AttTurns()
@@ -293,7 +347,7 @@ function buy(BtnNmb) {
             }
             break;
         case 12:
-            if (Cash >= 6) {
+            if (Cash >= 7) {
             Cash = Cash - 6
             document.getElementById('BuyMulti').style.visibility = 'hidden'
             BotMulti++
@@ -301,8 +355,8 @@ function buy(BtnNmb) {
             }
             break;
         case 13:
-            if (Cash >= 8) {
-            Cash = Cash - 8
+            if (Cash >= 6) {
+            Cash = Cash - 6
             document.getElementById('BuyDivi').style.visibility = 'hidden'
             BotDivi++
             AttTurns()
@@ -401,6 +455,10 @@ function hoverShop(witch) {
 
 
 async function SetBoss(rand) {
+    bgSnd.src = "sounds/boss.mp3"
+    if (bgSnd.muted == false) {
+        bgSnd.play()
+    }
     switch (rand) {
         case 5:
             anime({
@@ -427,9 +485,10 @@ async function SetBoss(rand) {
                 })
                 BotVar = BotMulti
                 BotVar1 = Bot03
-                Quais = ['BotMais']
+                Quais = ['BotMulti']
                 BotMulti = 0
                 Bot03 = 0
+                break;
         case 4:
             energy = 2
             anime({

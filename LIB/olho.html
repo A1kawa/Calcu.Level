@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObeyMe</title>
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+    }
+    /* Contêiner do fundo */
+    .parallax-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        perspective: 1000px;
+        z-index: 1;
+    }
+
+    /* Imagem de fundo */
+    .parallax-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%; 
+        background-image: url('BGolho.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: translate(-50%, -50%) scale(1);
+        /*transition: transform 0.1s linear;*/
+    }
+
+    </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <div class="parallax-background"></div>
+    <div style="position: absolute; top: -2%; left: 0;"> <img src="FrontEye.png" alt="" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div onclick="vezes()" style="top: 50%;left: 50%;transform: translate(-50%, -18%);position: absolute;height: 175px;width: 20px;background-color: rgba(0, 255, 255, 0);z-index: 3;"></div>
+    <div id="damage" style=" position: absolute;width: 100%;height: 100%;z-index: 2;top: 0;"></div>
+
+
+
+
+    <script>
+        let times = 0
+        const background = document.querySelector('.parallax-background')
+        // Adiciona o evento de movimento do mouse
+        document.addEventListener('mousemove', (event) => {
+        const x = (event.clientX / window.innerWidth) * 8 - 54
+        const y = (event.clientY / window.innerHeight) * 8 - 55
+        // Aplica a transformação para criar o efeito parallax
+        background.style.transform = `translate(${x}%, ${y}%) scale(1)`;
+        })
+        async function vezes (){
+            times++
+            const hitSnd = new Audio('hit.mp3')
+            hitSnd.volume = 0.05
+            hitSnd.currentTime = 0
+            hitSnd.play()
+            console.log('times aumentou')
+            document.getElementById('damage').style.backgroundColor = '#c9696908'
+            await delay(100)
+            document.getElementById('damage').style.backgroundColor = ''
+            if (times == 50) {
+                const ObeyMe = new Audio('obey.mp3')
+                ObeyMe.play()
+                document.getElementById('damage').style.backgroundImage = 'url(obey.png)'
+                setTimeout(() => {
+            window.location.href = "./index.html"
+            }, 20000)
+            }
+        }
+        function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+</html>
