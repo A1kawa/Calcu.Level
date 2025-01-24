@@ -1,4 +1,24 @@
-welcome  to CALCU.LEVEL
+    --   #####     #    #        #####  #     #     #       ####### #     # ####### #       
+    --  #     #   # #   #       #     # #     #     #       #       #     # #       #       
+    --  #        #   #  #       #       #     #     #       #       #     # #       #       
+    --  #       #     # #       #       #     #     #       #####   #     # #####   #       
+    --  #       ####### #       #       #     # ### #       #        #   #  #       #       
+    --  #     # #     # #       #     # #     # ### #       #         # #   #       #       
+    --   #####  #     # #######  #####   #####  ### ####### #######    #    ####### ####### 
+
+
+
+
+if trying our litte experiment, remember always to start with Landing.hmtl
+
+
+PRAISED BE YRIHM
+
+
+FOLLOW THE EYE
+
+
+OBEY
 
 
 
@@ -16,5 +36,5 @@ welcome  to CALCU.LEVEL
 
 
 
-
-the first Eye experiment
+ ______________________
+|the 1st Eye experiment|
