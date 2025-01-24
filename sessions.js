@@ -11,7 +11,7 @@ var operacao = ''
 var NmbAtual = 23
 var NmbComp = 55
 var Cash = 0 
-var Lvl = 20
+var Lvl = 1
 var display = document.getElementById('calcDpl')
 const background = document.querySelector('.parallax-background')
 

@@ -1,7 +1,20 @@
 var CalcRange01 = false
 var CalcRange02 = false
 var sorting = [
-
+    '<div id="Buy00" class="BuyButtons" onclick="buy(0)"><img src="buttons/0.png" alt="" class="buttons" style="margin: 0px;">$6</div>', 
+    '<div id="Buy01" class="BuyButtons" onclick="buy(1)"><img src="buttons/1.png" alt="" class="buttons" style="margin: 0px;">$8</div>', 
+    '<div id="Buy02" class="BuyButtons" onclick="buy(2)"><img src="buttons/2.png" alt="" class="buttons" style="margin: 0px;">$5</div>', 
+    '<div id="Buy03" class="BuyButtons" onclick="buy(3)"><img src="buttons/3.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
+    '<div id="Buy04" class="BuyButtons" onclick="buy(4)"><img src="buttons/4.png" alt="" class="buttons" style="margin: 0px;">$5</div>', 
+    '<div id="Buy05" class="BuyButtons" onclick="buy(5)"><img src="buttons/5.png" alt="" class="buttons" style="margin: 0px;">$5</div>', 
+    '<div id="Buy06" class="BuyButtons" onclick="buy(6)"><img src="buttons/6.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
+    '<div id="Buy07" class="BuyButtons" onclick="buy(7)"><img src="buttons/7.png" alt="" class="buttons" style="margin: 0px;">$5</div>', 
+    '<div id="Buy08" class="BuyButtons" onclick="buy(8)"><img src="buttons/8.png" alt="" class="buttons" style="margin: 0px;">$5</div>', 
+    '<div id="Buy09" class="BuyButtons" onclick="buy(9)"><img src="buttons/9.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
+    '<div id="BuyMais" class="BuyButtons" onclick="buy(10)" onmouseenter="LegOn(`legs/LegMais.png`, `BuyMais`)"><img src="buttons/+.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyMenos" class="BuyButtons" onclick="buy(11)" onmouseenter="LegOn(`legs/LegMenos.png`, `BuyMenos`)"><img src="buttons/-.png" alt="" class="buttons" style="margin: 0px;">$7</div>',
+    '<div id="BuyMulti" class="BuyButtons" onclick="buy(12)" onmouseenter="LegOn(`legs/LegMulti.png`, `BuyMulti`)"><img src="buttons/x.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
+    '<div id="BuyDivi" class="BuyButtons" onclick="buy(13)" onmouseenter="LegOn(`legs/LegDivi.png`, `BuyDivi`)"><img src="buttons/divide.png" alt="" class="buttons" style="margin: 0px;">$6</div>',
     '<div id="BuyAppend" class="BuyButtons" onclick="buy(15)" onmouseenter="LegOn(`legs/Leg1.png`, `BuyAppend`)"><img src="buttons/append.png" alt="" class="buttons" style="margin: 0px;">$4</div>',
     '<div id="BuyNear" class="BuyButtons" onclick="buy(16)" onmouseenter="LegOn(`legs/LegN.png`, `BuyNear`)"><img src="buttons/near.png" alt="" class="buttons" style="margin: 0px;">$9</div>',
     '<div id="BuyConv" class="BuyButtons" onclick="buy(17)" onmouseenter="LegOn(`legs/LegC.png`, `BuyConv`)"><img src="buttons/convert.png" alt="" class="buttons" style="margin: 0px;">$5</div>',
@@ -347,7 +360,7 @@ function buy(BtnNmb) {
             }
             break;
         case 12:
-            if (Cash >= 7) {
+            if (Cash >= 6) {
             Cash = Cash - 6
             document.getElementById('BuyMulti').style.visibility = 'hidden'
             BotMulti++
