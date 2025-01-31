@@ -278,6 +278,7 @@ function Roll() {
 function battery() {
 if (BotChrg >= energy){
     document.getElementById("BotChrg").currentTime = 0
+    document.getElementById("BotChrg").volume = .6
     document.getElementById("BotChrg").play()
     const digits = [Bot00, Bot01, Bot02, Bot03, Bot04, Bot05, Bot06, Bot07, Bot08, Bot09]
     const index = Math.floor(Math.random() * 9)
