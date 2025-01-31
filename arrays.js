@@ -473,7 +473,7 @@ async function SetBoss(rand) {
         bgSnd.play()
     }
     switch (rand) {
-        case 5:
+        case 4:
             anime({
                     targets: '#bossImg',
                     scale: 1,
@@ -502,7 +502,7 @@ async function SetBoss(rand) {
                 BotMulti = 0
                 Bot03 = 0
                 break;
-        case 4:
+        case 5:
             energy = 2
             anime({
                     targets: '#bossImg',

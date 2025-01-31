@@ -571,10 +571,14 @@ async function Continue() {
     document.getElementById('text-cur').innerText = NmbAtual
     document.getElementById('needed').innerText = NmbComp
     document.getElementById('rounds').innerText = `${Lvl}/20`
-    if (Lvl == 5 || Lvl == 10 || Lvl == 15 || Lvl == 20) {
+    if (Lvl == 5 || Lvl == 10 || Lvl == 15) {
         BossBattle = true
-        const boss = Math.floor(Math.random() * 5) + 1
+        const boss = Math.floor(Math.random() * 4) + 1
         SetBoss(boss) 
+    }
+    if (Lvl == 20) {
+        BossBattle = true
+        SetBoss(5)
     }
     display.innerText = NmbAtual
     document.getElementById('congrats').innerText = "CONGRAT"
