@@ -199,7 +199,7 @@ function Reverse() {
     ClickSnd()
     if (BotRev >= energy) {
         BotRev = BotRev - energy
-        document.getElementById('rev').textContent = BotConv
+        document.getElementById('rev').textContent = BotRev
 
         const required = NmbComp
         NmbComp = NmbAtual
@@ -383,6 +383,9 @@ function send() {
     passou.volume = .4
     Cash = Cash + 23
     Lvl++
+    if (Lvl == 6 ||Lvl == 11||Lvl == 16) {
+        Cash = Cash + 7
+    }
     if (Lvl == 21) {
         bgSnd.muted = true
         BttnSnd.src = "sounds/youwin.mp3"
