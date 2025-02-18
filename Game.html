@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcu.Level</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="parallax-container">
+        <div class="parallax-background">
+            <img id="bossImg" src="buttons/LandingPageBG.png" style=" border-radius: 50%; width: 110%; height: 110%; position: absolute; top: 50%; left: 50%; translate: -50% -50%; transform: scale(0);">
+            <div id="bossLeg" style="width: 100%;height: fit-content;transform: scale(0);">
+                <h1 id="bossName" style="font-size: 100px; position: absolute; top: 2%; left: 50%; translate: -50% 0%; color: rgb(255, 255, 255); font-weight: 900;">BOSS BATTLE</h1>
+            </div>
+            <p id="bossDesc" style="font-size: 30px; position: absolute; top: -15px; left: 50%; translate: -50% 0%; color: rgb(255, 78, 78);">You need to calculate a large number</p>
+            <div id="sound" ><img onclick="MusicToggle(true)" id="auto" src="buttons/soundMute.png" alt=""></div>
+            <div class="obj">
+                <div class="text-obj"><div id="needed"></div></div>
+                <div id="text-cur"></div>
+                <img src="buttons/needed.png" alt="">
+            </div>
+
+        </div>
+        
+    </div>
+
+
+    <div class="Legenda" style="scale: 0.7;position: absolute;right: -22px;top: 10px;z-index: 11;">
+        <img id="leg" src="" alt="">
+    </div>
+
+    <div class = 'Calculator' id="ChangeBG">
+        <div class = 'calcBG'>
+            <img id="error" style="display: none;position: absolute;margin: 5px 81px 0px 0px;" src="buttons/error.png" alt="">
+            <div id = calcDpl></div>
+            <div id="AllButtons">
+                <div class="NewButtons">
+                    <div id="NewButtons01" class="lines"></div>
+                    <div id="NewButtons02" class="lines"></div>
+                    <div id="NewButtons03" class="lines"></div>
+                    <div id="NewButtons04" class="lines"></div>
+                </div>
+                <div>
+                    <div class = 'lines'>
+                        <div class="column" onclick="digito(1)"><img src="buttons/1.png" alt="" class="buttons"><div id = '1' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(2)"><img src="buttons/2.png" alt="" class="buttons"><div id = '2' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(3)"><img src="buttons/3.png" alt="" class="buttons"><div id = '3' class = 'vezes'></div></div>
+                        <div id="Mais" class="column" onclick="adicao()" onmouseenter="LegOn(`legs/LegMais.png`, `Mais`)"><img src="buttons/+.png" alt="" class="buttons"><div id = '+' class = 'vezes'>2</div></div>
+                    </div>
+                    <div class = 'lines'>
+                        <div class="column" onclick="digito(4)"><img src="buttons/4.png" alt="" class="buttons"><div id = '4' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(5)"><img src="buttons/5.png" alt="" class="buttons"><div id = '5' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(6)"><img src="buttons/6.png" alt="" class="buttons"><div id = '6' class = 'vezes'></div></div>
+                        <div id="Menos" class="column" onclick="subtracao()" onmouseenter="LegOn(`legs/LegMenos.png`, `Menos`)"><img src="buttons/-.png" alt="" class="buttons"><div id = '-' class = 'vezes'></div></div>
+                    </div>
+                    <div class = 'lines'>
+                        <div class="column" onclick="digito(7)"><img src="buttons/7.png" alt="" class="buttons"><div id = '7' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(8)"><img src="buttons/8.png" alt="" class="buttons"><div id = '8' class = 'vezes'></div></div>
+                        <div class="column" onclick="digito(9)"><img src="buttons/9.png" alt="" class="buttons"><div id = '9' class = 'vezes'></div></div>
+                        <div id="Multi" class="column" onclick="multiplicacao()" onmouseenter="LegOn(`legs/LegMulti.png`, `Multi`)"><img src="buttons/x.png" alt="" class="buttons"><div id = 'x' class = 'vezes'></div></div>
+                    </div>
+                    <div class = 'lines'>
+                        <div id="bateria" class="column" onclick="battery()" onmouseenter="LegOn(`legs/Battery.png`, `bateria`)"><img src="buttons/charge.png" alt="" class="buttons"><div class = 'vezes' id = 'power'></div></div>
+                        <div class="column" onclick="digito(0)"><img src="buttons/0.png" alt="" class="buttons"><div id = '0' class = 'vezes'></div></div>
+                        <div class="column" onclick="send()" id = 'send'><img src="buttons/send.png" alt="" class="buttons"></div>
+                        <div id="Divi" class="column" onclick="divisao()" onmouseenter="LegOn(`legs/LegDivi.png`, `Divi`)"><img src="buttons/divide.png" alt="" class="buttons"><div id = '/' class = 'vezes'></div></div>
+                    </div>
+                </div>
+                <div class="NewButtons">
+                    <div id="NewButtons05" class="lines"></div>
+                    <div id="NewButtons06" class="lines"></div>
+                    <div id="NewButtons07" class="lines"></div>
+                    <div id="NewButtons08" class="lines"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="money">
+        <div id="congrats" onclick="restart()">RESTART</div>
+        <div id="cash"></div>
+        <div id="rounds">1/20</div>
+    </div>
+    <audio id="default" src="sounds/DefaultClick.mp3"></audio>
+    <audio id="BotChrg" src="sounds/shock.mp3"></audio>
+    <audio id="musica" src="sounds/MainBG_edite.mp3"></audio>
+
+    
+
+    <div id = 'shop'>
+        <div id = 'showcase01' class="showcases"></div>
+        <div id = 'showcase02' class="showcases"></div>
+        <div id = 'ShopBtns'>
+            <div class="reroll"><img onmouseenter="hoverShop('RR')" onclick="Reroll()" id="RR" src="buttons/reroll.png" alt="" style="height: 80px; margin: 20px 0px 0px 50px;"></div>
+            <div class="continue"><img onclick="Continue()" onmouseenter="hoverShop('CNT')" id="CNT" src="buttons/continue.png" alt="" style="height: 80px; margin: 20px 50px 0px 0px;"></div>
+        </div>
+    </div>
+
+    <script src="./anime.min.js"></script>
+    <script src="arrays.js"></script>
+    <script src="sessions.js"></script>
+    <script>
+        function MusicToggle(qual) {
+            if (qual == true) {
+                document.getElementById('sound').innerHTML = `<img onclick="MusicToggle(false)" id="auto" src="buttons/soundOn.png" alt="">`
+                bgSnd.muted = false
+                bgSnd.volume = .3
+                bgSnd.play()
+            } else{
+                document.getElementById('sound').innerHTML = `<img onclick="MusicToggle(true)" id="auto" src="buttons/soundMute.png" alt="">`
+                bgSnd.muted = true
+            }
+        }
+    </script>
+</body>
+</html>
